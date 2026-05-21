@@ -4,42 +4,63 @@ import Experience from "./Experience";
 import Education from "./Education";
 import Skills from "./Skills";
 
+function SectionHeading({ label }) {
+  return (
+    <>
+      <h2 className="px-heading">{label}</h2>
+      <div className="px-heading-bar" />
+    </>
+  );
+}
+
 export default function About() {
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
-      const id = location.hash.replace("#", "");
-      const el = document.getElementById(id);
+      const el = document.getElementById(location.hash.replace("#", ""));
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
-      // scroll to top of About when navigating to /about
-      const aboutEl = document.getElementById("about");
-      if (aboutEl) aboutEl.scrollIntoView({ behavior: "auto" });
+      window.scrollTo(0, 0);
     }
   }, [location]);
 
   return (
-    <main id="about" className="px-6 py-12">
-      <section className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-semibold mb-4">About</h1>
-        <p className="text-gray-600 mb-8">Brief about content goes here.</p>
-      </section>
+    <main className="px-page">
+      <div className="px-section">
+        <section id="about">
+          <SectionHeading label="ABOUT ME" />
+          <p className="about-bio">
+            Hi, I'm Hilmi — an Information Technology graduate from Universiti
+            Teknologi MARA with a Bachelor of Information Technology (Hons.) and
+            hands-on experience in full stack software development, system
+            integration, and automation. Skilled in JavaScript, Python, C#, C++,
+            Java, PHP, and SQL with a strong foundation in data structures and
+            UI/UX design.
+          </p>
+        </section>
 
-      <section id="experience" className="py-12">
-        <h2 className="text-2xl font-semibold mb-4">Experience</h2>
-        <Experience />
-      </section>
+        <hr className="px-divider" />
 
-      <section id="education" className="py-12">
-        <h2 className="text-2xl font-semibold mb-4">Education</h2>
-        <Education />
-      </section>
+        <section id="experience">
+          <SectionHeading label="EXPERIENCE" />
+          <Experience />
+        </section>
 
-      <section id="skills" className="py-12">
-        <h2 className="text-2xl font-semibold mb-4">Skills</h2>
-        <Skills />
-      </section>
+        <hr className="px-divider" />
+
+        <section id="education">
+          <SectionHeading label="EDUCATION" />
+          <Education />
+        </section>
+
+        <hr className="px-divider" />
+
+        <section id="skills">
+          <SectionHeading label="SKILLS" />
+          <Skills />
+        </section>
+      </div>
     </main>
   );
 }
