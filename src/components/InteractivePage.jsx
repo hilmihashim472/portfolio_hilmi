@@ -1,6 +1,31 @@
+export default function InteractivePage() {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: "var(--nav-h)",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 50,
+      }}
+    >
+      <iframe
+        src={`rpg/portfolio.html`}
+        style={{ width: "100%", height: "100%", border: "none" }}
+        title="Interactive RPG"
+        allow="autoplay"
+      />
+    </div>
+  );
+}
+
+/*
+// WIP MAINTENANCE PAGE (commented out while Godot game is active)
+
 import { useNavigate } from "react-router-dom";
 
-export default function InteractivePage() {
+function InteractivePageMaintenance() {
   const navigate = useNavigate();
 
   return (
@@ -41,6 +66,7 @@ export default function InteractivePage() {
     </div>
   );
 }
+*/
 
 /*
 
